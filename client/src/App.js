@@ -1,14 +1,8 @@
-import './App.css';
-import { HashRouter,Route,Routes } from 'react-router-dom';
-import Home from "./pages/Home"
+import "./App.css"
+import AppRouter from "./routes/index"
+
 function App() {
-  return (
-<HashRouter>
-  <Routes>
-    <Route path="/" element={<Home/>}/>
-  </Routes>
-</HashRouter>      
-  );
+  return <AppRouter />
 }
 
-export default App;
+export default App
