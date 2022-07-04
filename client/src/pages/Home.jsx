@@ -6,25 +6,14 @@ import axios from "axios"
 const Home = () => {
   const [news, setNews] = useState([])
 
-<<<<<<< HEAD
-  const getFeeds = async ()=>{
-    await axios.get(
-      `https://saurav.tech/NewsAPI/top-headlines/category/health/gb.json`
-    )
-    .then((res) => {
-      setNews(res.data.articles)
-    })
-    .catch((err)=> console.log(err))
-=======
   const getFeeds = async () => {
     await axios
       .get(
-        `https://newsapi.org/v2/top-headlines?country=ng&category=health&apiKey=472d945166ef40efadf8196dff58c61b`
+        `https://saurav.tech/NewsAPI/top-headlines/category/health/gb.json`
       )
       .then((res) => {
         setNews(res.data.articles)
       })
->>>>>>> 83093fdb54a94810528481bb43bb4af02b2048a4
   }
 
   useEffect(() => {
@@ -79,15 +68,9 @@ const HeadWrapper = styled.div`
   display: flex;
   justify-content: space-between;
 
-<<<<<<< HEAD
-  p{
-    font-size:12px;
-    font-weight: 500;
-=======
   p {
     font-size: 12px;
     font-weight: 600;
->>>>>>> 83093fdb54a94810528481bb43bb4af02b2048a4
     padding: 5px 0;
   }
 `
@@ -141,11 +124,7 @@ const NewsFeed = styled.div`
     .feed {
       display: grid;
       gap: 10px;
-<<<<<<< HEAD
-      background: #FDFEFF;
-=======
       background: #fdfeff;
->>>>>>> 83093fdb54a94810528481bb43bb4af02b2048a4
       /* shadow 1 */
 
       box-shadow: 0px 16px 40px rgba(112, 144, 176, 0.2);
