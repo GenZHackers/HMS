@@ -38,11 +38,11 @@ const NavBar = () => {
   return (
     <Navigation>
       {
-        navItems.map((nav, i)=>{
+        navItems.map((nav, k)=>{
           return(
             <>
-              <div key={i} className="item" onClick={()=>{navigate(`${nav.link}`); setActive(i)}}>
-              {active === i ? nav.outline : nav.icon}
+              <div key={k} className="item" onClick={()=>{navigate(`${nav.link}`); setActive(k)}}>
+              {active === k ? nav.outline : nav.icon}
               <p>{nav.title}</p>
               </div>
             </>

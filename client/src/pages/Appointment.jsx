@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import {
   FaEye,
@@ -7,8 +7,12 @@ import {
   FaUserAlt,
   FaXRay,
 } from "react-icons/fa"
+import Doctor from "../Components/Appointment/Doctor"
 
 const Appointment = () => {
+  const [appoint, setAppoint] = useState(false)
+  const [doctor, setDoctor] = useState()
+
   const categories = [
     {
       title: "PCP",
@@ -65,7 +69,7 @@ const Appointment = () => {
         <div className="category">
           {categories.map((item, i) => {
             return (
-              <div className="item" key={i}>
+              <div className="item" key={i} style={{ opacity: i===0 ? 1 : 0.3}}>
                 <div
                   className="icon_container"
                   style={{ background: item.color }}
@@ -92,18 +96,21 @@ const Appointment = () => {
         <div className="container">
           {doctors.map((dr, i) => {
             return (
-              <div className="doctor" key={i}>
+              <div className="doctor" key={i} onClick={()=> setDoctor(dr)}>
                 <img src={dr.img} alt="" />
                 <div className="texts">
                   <h4>{dr.name}</h4>
                   <p>{dr.type}</p>
                   <p className="small">{dr.exp}</p>
                 </div>
+                
+                {/* {console.log(appoint)} */}
               </div>
             )
           })}
         </div>
       </div>
+      { doctor && <Doctor doctor={doctor} cancel={setDoctor}/>}
     </AppointmentContainer>
   )
 }

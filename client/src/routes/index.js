@@ -6,6 +6,7 @@ import NotFound from "../pages/NotFound"
 import NavBar from "../Components/Navbar"
 import Appointment from "../pages/Appointment"
 import Notification from "../pages/Notification"
+import Admin from "../Components/Admin/Admin"
 
 const AppRoutes = () => {
   return (
@@ -17,8 +18,13 @@ const AppRoutes = () => {
         <Route path="/notification" element={<Notification />} />
         <Route path="/404" element={<NotFound />} />
         <Route path="*" element={<Navigate replace to="/404" />} />
+        
       </Routes>
       <NavBar />
+      {/* <Routes>
+        <Route path="/admin" element={<Admin />} />
+      </Routes> */}
+      
     </BrowserRouter>
   )
 }
