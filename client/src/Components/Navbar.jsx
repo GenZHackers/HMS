@@ -1,31 +1,54 @@
-import React from "react"
+import React, { useState } from "react"
 import { NavLink, useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import {FaHome, FaBell, FaUser, FaPen} from "react-icons/fa"
+import { HiBell, HiHome, HiOutlineBell, HiOutlineHome, HiOutlinePencil, HiOutlineUser, HiPencil, HiUser } from "react-icons/hi"
 
 const NavBar = () => {
   const navigate = useNavigate()
+  const [active, setActive] = useState(0)
+
+  const navItems = [
+    {
+      title: "Home",
+      icon: <HiHome  size={24} color="#0048b2"/>,
+      outline: <HiOutlineHome  size={24} color="#0048b2"/>,
+      link: "/"
+    },
+    {
+      title: "Appointment",
+      icon: <HiPencil size={24} color="#0048b2"/>,
+      outline: <HiOutlinePencil  size={24} color="#0048b2"/>,
+      link: "/appointment"
+    },
+    {
+      title: "Notification",
+      icon: <HiBell size={24} color="#0048b2"/>,
+      outline: <HiOutlineBell  size={24} color="#0048b2"/>,
+      link: "/notification"
+    },
+    {
+      title: 'Dashboard',
+      icon: <HiUser size={24} color="#0048b2"/>,
+      outline: <HiOutlineUser size={24} color="#0048b2"/>,
+      link: "/dashboard"
+    }
+  ]
+
   return (
     <Navigation>
-      <div className="item" onClick={()=> navigate("/")}>
-        <FaHome  size={18} color="#0048b2"/>
-        <p>Home</p>
-      </div>
-
-      <div className="item" onClick={()=> navigate("/appointment")}>
-        <FaPen size={18} color="#0048b2"/>
-        <p>Appointment</p>
-      </div>
-
-      <div className="item" onClick={()=> navigate("/notification")}>
-        <FaBell  size={18} color="#0048b2"/>
-        <p>Notification</p>
-      </div>
-
-      <div className="item" onClick={()=> navigate("/dashboard")}>
-        <FaUser size={18} color="#0048b2"/>
-        <p>profile</p>
-      </div>
+      {
+        navItems.map((nav, i)=>{
+          return(
+            <>
+              <div key={i} className="item" onClick={()=>{navigate(`${nav.link}`); setActive(i)}}>
+              {active === i ? nav.outline : nav.icon}
+              <p>{nav.title}</p>
+              </div>
+            </>
+          )
+        })
+      }
     </Navigation>
   )
 }

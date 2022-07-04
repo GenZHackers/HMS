@@ -10,11 +10,12 @@ const Home = () => {
 
   const getFeeds = async ()=>{
     await axios.get(
-      `https://newsapi.org/v2/top-headlines?country=ng&category=health&apiKey=472d945166ef40efadf8196dff58c61b`
+      `https://saurav.tech/NewsAPI/top-headlines/category/health/gb.json`
     )
     .then((res) => {
       setNews(res.data.articles)
     })
+    .catch((err)=> console.log(err))
   }
 
   useEffect(()=>{getFeeds()}, [])
@@ -64,13 +65,14 @@ const HeadWrapper = styled.div`
 
   p{
     font-size:12px;
-    font-weight: 600;
+    font-weight: 500;
     padding: 5px 0;
   }
 `
 const Profile = styled.div`
   border-radius: 50%;
-  padding: 0.5rem;
+  align-items: center;
+  justify-content: center;
 
   img{
     width: 50px;
@@ -113,7 +115,7 @@ const NewsFeed = styled.div`
       display: grid;
       gap: 10px;
       background: #FDFEFF;
-/* shadow 1 */
+      /* shadow 1 */
 
       box-shadow: 0px 16px 40px rgba(112, 144, 176, 0.2);
       border-radius: 16px;

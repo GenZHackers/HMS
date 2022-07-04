@@ -95,9 +95,6 @@ const Dashboard = () => {
 
   return (
     <Container>
-      <div className="return">
-        <FaArrowLeft />
-      </div>
 
       <div className="profile">
         <img src={profile.img} alt="" />

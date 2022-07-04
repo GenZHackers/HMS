@@ -61,9 +61,8 @@ const Appointment = () => {
           {
             categories.map((item, i)=>{
               return(
-                <div className="item" key={i} >
-
-                  <div className="icon_container" style={{background: item.color }}>
+                <div className="item" key={i} style={{opacity: i === 0 ? 1.0 : 0.2 }}>
+                  <div className="icon_container" style={{background: item.color, opacity: i === 0 ? 1.0 : 0.2, boxShadow: "0px 16px 40px rgba(112, 144, 176, 0.2)" }}>
                     {item.icon}
                   </div>
                   <p style={{color: item.color }}>{item.title}</p>
@@ -104,7 +103,7 @@ const Appointment = () => {
 }
 
 const AppointmentContainer = styled.div`
-  padding: 10px;
+  padding: 10px 10px 80px;
 
   .categories{
     display: grid;
