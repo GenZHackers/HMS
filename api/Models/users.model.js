@@ -12,7 +12,8 @@ const userSchema = new Schema({
     genotype: {type: String},
     bloodGroup: {type: String},
     disability: {type: Boolean},
-
+    height: {type: String},
+    weight: {type: String},
 },
 {
     timestamps: true

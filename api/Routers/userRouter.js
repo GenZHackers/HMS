@@ -52,3 +52,12 @@ router.route('/signin').post(async (req, res)=>{
         }
     })
 })
+
+router.get("/profile", requireLogin, (req, res)=>{
+    const id = req.user._id
+    User.findById(id)
+    .then(resp => res.json(resp.data))
+    .catch(err => res.json({message: "An error occured"}))
+})
+
+module.exports = router

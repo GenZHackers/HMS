@@ -5,6 +5,7 @@ const doctorSchema = new Schema({
     name: {type: String},
     category: {type: String},
     profilePicture: {type: String},
+    availability: {type: String},
     yearsOfExperience: {type: Number},
     gender: {type: String},
     phoneNumber: {type: Number},

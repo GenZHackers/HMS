@@ -5,8 +5,8 @@ const appointmentSchema = new Schema({
     doctor: {type: Schema.Types.ObjectId, ref: "Doctor"},
     user:  {type: Schema.Types.ObjectId, ref: "User"},
     date: {type: Date},
-    category: {type: String},
-    location: {type:String}
+    time: {type: String},
+    category: String,
 })
 
 const Appointment = mongoose.model("Appointment", appointmentSchema)
