@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 import axios from "axios"
 
-
-
 const Home = () => {
-
   const [news, setNews] = useState([])
 
+<<<<<<< HEAD
   const getFeeds = async ()=>{
     await axios.get(
       `https://saurav.tech/NewsAPI/top-headlines/category/health/gb.json`
@@ -16,11 +15,22 @@ const Home = () => {
       setNews(res.data.articles)
     })
     .catch((err)=> console.log(err))
+=======
+  const getFeeds = async () => {
+    await axios
+      .get(
+        `https://newsapi.org/v2/top-headlines?country=ng&category=health&apiKey=472d945166ef40efadf8196dff58c61b`
+      )
+      .then((res) => {
+        setNews(res.data.articles)
+      })
+>>>>>>> 83093fdb54a94810528481bb43bb4af02b2048a4
   }
 
-  useEffect(()=>{getFeeds()}, [])
-  
-  
+  useEffect(() => {
+    getFeeds()
+  }, [])
+
   return (
     <section>
       <Header>
@@ -29,26 +39,32 @@ const Home = () => {
             <Greet>Hi Williams</Greet>
             <p>Let's help you book an appointment today</p>
           </div>
-          <Profile>
-            <img src="https://th.bing.com/th/id/OIP.ZE16CYpVSpHWWjn2cJrewAHaHZ?pid=ImgDet&rs=1" alt="" />
-          </Profile>
+          <Link to="/dashboard">
+            <Profile>
+              <img
+                src="https://th.bing.com/th/id/OIP.ZE16CYpVSpHWWjn2cJrewAHaHZ?pid=ImgDet&rs=1"
+                alt=""
+              />
+            </Profile>
+          </Link>
         </HeadWrapper>
         <Searchbar type="search" placeholder="search" />
       </Header>
       <NewsFeed>
         <NewsHead>Top Health News</NewsHead>
         <div className="feeds">
-          {
-            news.map((feed, i)=>{
-              return(
-                <div key={i} className="feed">
-                  <img src={feed.urlToImage} alt="" />
-                  <h3>{feed.title}</h3>
-                  <p>Author : {feed.author}</p>
-                </div>
-              )
-            })
-          }
+          {news.map((feed, i) => {
+            return (
+              <div key={i} className="feed">
+                <img src={feed.urlToImage} alt="" />
+                <h3>
+                  <a href={feed.url}>{feed.title}</a>
+                </h3>
+                <p>Source: {feed.source.name}</p>
+                <p>Author : {feed.author ? feed.author : "Anonymous"}</p>
+              </div>
+            )
+          })}
         </div>
       </NewsFeed>
     </section>
@@ -63,9 +79,15 @@ const HeadWrapper = styled.div`
   display: flex;
   justify-content: space-between;
 
+<<<<<<< HEAD
   p{
     font-size:12px;
     font-weight: 500;
+=======
+  p {
+    font-size: 12px;
+    font-weight: 600;
+>>>>>>> 83093fdb54a94810528481bb43bb4af02b2048a4
     padding: 5px 0;
   }
 `
@@ -74,7 +96,7 @@ const Profile = styled.div`
   align-items: center;
   justify-content: center;
 
-  img{
+  img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -104,24 +126,37 @@ const Searchbar = styled.input`
 const NewsFeed = styled.div`
   margin: 0.5rem;
 
-  .feeds{
+  .feeds {
     display: grid;
     gap: 40px;
     border-radius: 20px;
     padding: 20px 0;
-    
+    margin-bottom: 2rem;
 
-    .feed{
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    .feed {
       display: grid;
       gap: 10px;
+<<<<<<< HEAD
       background: #FDFEFF;
+=======
+      background: #fdfeff;
+>>>>>>> 83093fdb54a94810528481bb43bb4af02b2048a4
       /* shadow 1 */
 
       box-shadow: 0px 16px 40px rgba(112, 144, 176, 0.2);
       border-radius: 16px;
       padding-bottom: 20px;
 
-      img{
+      @media (min-width: 768px) {
+        gap: 0.5rem;
+      }
+
+      img {
         width: 100%;
         height: 200px;
         border-radius: 16px;
@@ -129,14 +164,14 @@ const NewsFeed = styled.div`
         /* Inside auto layout */
       }
 
-      h3{
+      h3 {
         font-size: 13px;
         font-weight: 500;
         padding: 0 10px;
       }
 
-      p{
-        color: rgb(100,100,100);
+      p {
+        color: rgb(100, 100, 100);
         font-size: 12px;
         padding: 0 10px;
       }
@@ -147,7 +182,5 @@ const NewsFeed = styled.div`
 const NewsHead = styled.p`
   color: #0048b2;
   font-weight: 500;
-
-
 `
 export default Home
